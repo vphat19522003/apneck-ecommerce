@@ -1,96 +1,167 @@
 import { BsDiscord, BsTwitter, BsFacebook, BsSlack } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import appstore from "../assets/images/pay/app.jpg";
-import chplay from "../assets/images/pay/play.jpg";
-import pay from "../assets/images/pay/pay.png";
+import playstore from "../assets/images/pay/play.jpg";
+import visa from "../assets/images/pay/pay.png";
 
 const footer = () => {
   return (
     <>
       <footer className="footer p-5">
         <div className="container-xxl">
-          <div className="row">
-            <div className="col-4 d-flex flex-column">
-              <h3 className="mb-4">Contact us</h3>
-              <div className="footer-details">
-                <p className="mb-3">
+          <div className="row justify-content-center justify-content-md-start">
+            <div className="col-md-4 col-lg-4 mb-4 mb-md-0 ">
+              <h2 className="footer-title mb-3">
+                <b>Contact</b>
+              </h2>
+              <div className="mb-3">
+                <p>
                   <b>Address:</b> Thika town, Naltex building, 2nd floor
-                </p>
-                <p className="mb-3">
+                </p>{" "}
+              </div>
+              <div className="mb-3">
+                <p>
                   <b>Phone:</b>{" "}
-                  <a href="tel:+2457865438">Call us +2457865438</a>
-                </p>
-                <p className="mb-5">
+                  <a className="footer-tel" href="tel:+1234567890">
+                    Call us at +1 (234) 567-890
+                  </a>
+                </p>{" "}
+              </div>
+              <div className="mb-4">
+                <p>
                   <b>Hours:</b> From 8 a.m To 6 p.m
-                </p>
-                <p className="mb-3">
+                </p>{" "}
+              </div>
+              <div className="mb-3">
+                <p>
                   <b>Follow the developer</b>
-                </p>
-                <div className="mb-3 social-icons d-flex justify-content-around">
-                  <Link>
-                    <BsDiscord className="fs-4" />
+                </p>{" "}
+              </div>
+              <div className="socials d-flex gap-3">
+                <Link
+                  to="https://discord.com/channels/1027937184768081950/1027937184768081952"
+                  id="footer-link"
+                  target="_blank"
+                  className="gap-3"
+                >
+                  <BsDiscord />
+                </Link>
+                <Link
+                  to="https://twitter.com/eclarkhalid"
+                  id="footer-link"
+                  target="_blank"
+                  className="gap-3"
+                >
+                  <BsTwitter />
+                </Link>
+                <Link className="gap-3" id="footer-link">
+                  <BsFacebook />
+                </Link>
+                <Link
+                  to="https://app.slack.com/client/T0195LMKD1R/D04QEBN1J80/rimeto_profile/U04PQHERFM1?cdn_fallback=2"
+                  id="footer-link"
+                  target="_blank"
+                  className="gap-3"
+                >
+                  <BsSlack />
+                </Link>
+              </div>
+            </div>
+            <div className="col-md-2 col-lg-2 mb-3 mb-md-0">
+              <h2 className="footer-title mb-3">
+                <b>About</b>
+              </h2>
+              <div className="mb-3">
+                {" "}
+                <Link to="/about" id="footer-links">
+                  About Us
+                </Link>{" "}
+              </div>
+              <div className="mb-3">
+                {" "}
+                <Link to="checkout" id="footer-links">
+                  Delivery
+                </Link>{" "}
+              </div>
+              <div className="mb-3">
+                {" "}
+                <Link id="footer-links">Privacy Policy</Link>{" "}
+              </div>
+              <div className="mb-3">
+                {" "}
+                <Link id="footer-links">Terms & Conditions</Link>{" "}
+              </div>
+              <div className="mb-3">
+                {" "}
+                <Link id="footer-links">Fee Policy</Link>{" "}
+              </div>
+            </div>
+            <div className="col-md-2 col-lg-2 mb-3 mb-md-0">
+              <h2 className="footer-title mb-3">
+                <b>Account</b>
+              </h2>
+              <div className="mb-3">
+                {" "}
+                <Link to="/login" id="footer-links">
+                  Profile
+                </Link>{" "}
+              </div>
+              <div className="mb-3">
+                {" "}
+                <Link to="/cart" id="footer-links">
+                  View Cart
+                </Link>{" "}
+              </div>
+              <div className="mb-3">
+                {" "}
+                <Link to="/contact" id="footer-links">
+                  Help
+                </Link>{" "}
+              </div>
+              <div className="mb-3">
+                {" "}
+                <Link id="footer-links">Payments</Link>{" "}
+              </div>
+              <div className="mb-3">
+                {" "}
+                <Link id="footer-links">My Wishlist</Link>{" "}
+              </div>
+              <div className="mb-3">
+                {" "}
+                <Link id="footer-links">Coupons</Link>{" "}
+              </div>
+            </div>
+            <div className="col-md-4 col-lg-4">
+              <h2 className="footer-title mb-3">
+                <b>Install App</b>
+              </h2>
+              <p className="mb-3">
+                Available On Google Play Services & App Store
+              </p>
+              <div className="className='mb-3 col-md-6 col-12 pay">
+                <div className="mb-3">
+                  <Link
+                    to="https://play.google.com/store/games?hl=en_US&gl=US"
+                    target="_blank"
+                  >
+                    <img src={playstore} alt="" />
                   </Link>
-                  <Link>
-                    <BsTwitter className="fs-4" />
-                  </Link>
-                  <Link>
-                    <BsFacebook className="fs-4" />
-                  </Link>
-                  <Link>
-                    <BsSlack className="fs-4" />
+                </div>
+                <div className="mb-3">
+                  <Link to="https://www.apple.com/app-store/" target="_blank">
+                    <img src={appstore} alt="" />
                   </Link>
                 </div>
               </div>
-            </div>
-            <div className="col-2">
-              <h3 className="mb-4">About</h3>
-              <div className="footer-details d-flex flex-column">
-                <Link className="mb-3">About Us</Link>
-                <Link className="mb-3">Delivery</Link>
-                <Link className="mb-3">Privacy Policy</Link>
-                <Link className="mb-3">Terms & Conditions</Link>
-                <Link className="mb-3">Fee Policy</Link>
-              </div>
-            </div>
-            <div className="col-2">
-              <h3 className="mb-4">Account</h3>
-              <div className="footer-details d-flex flex-column">
-                <Link className="mb-3">Profile</Link>
-                <Link className="mb-3">View Cart</Link>
-                <Link className="mb-3">Help</Link>
-                <Link className="mb-3">Payments</Link>
-                <Link className="mb-3">My Wishlist</Link>
-                <Link className="mb-3">Coupons</Link>
-              </div>
-            </div>
-            <div className="col-4">
-              <h3 className="mb-3">Install App</h3>
-              <div className="footer-details">
-                <p>Available On Google Play Services & App Store</p>
-                <div className="pay">
-                  <Link>
-                    <img
-                      src={chplay}
-                      alt="Google Play"
-                      className="img-fluid p-2"
-                    />
-                  </Link>
-                  <Link>
-                    <img
-                      src={appstore}
-                      alt="App Store"
-                      className="img-fluid p-2 "
-                    />
-                  </Link>
-                </div>
-                <p className="mb-2">Payment Methods</p>
-                <Link className="pay">
-                  <img src={pay} alt="pay" className="img-fluid p-2" />
+              <p className="mb-3">Payment Methods</p>
+              <div className="pay">
+                <Link to="https://www.paypal.com/signin" target="_blank">
+                  <img src={visa} alt="" />
                 </Link>
               </div>
             </div>
           </div>
-          <hr />
+          <hr className="my-4" />
           <div className="row">
             <div className="col-12 col-md-6">
               <p className="text-center text-md-start">

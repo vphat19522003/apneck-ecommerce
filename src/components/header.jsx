@@ -1,140 +1,354 @@
+// import { ShopContext } from "../components/shopcontext";
+import { CiMail } from "react-icons/ci";
 import { BiPhoneCall } from "react-icons/bi";
-import { AiOutlineMail } from "react-icons/ai";
-import { HiOutlineInboxIn } from "react-icons/hi";
+
 import { VscAccount } from "react-icons/vsc";
-import { CgShoppingCart } from "react-icons/cg";
-import { Link, useLocation } from "react-router-dom";
+import { CgShoppingCart, CgProductHunt } from "react-icons/cg";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import compare from "../assets/images/compare.svg";
+import wishlist from "../assets/images/wishlist.svg";
+import user from "../assets/images/user.svg";
 import logo from "../assets/images/apneck.png";
+import { useState } from "react";
 
 const header = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  // const { getTotalCartProducts, getTotalCartAmount } = useContext(ShopContext);
+
+  // const totalProducts = getTotalCartProducts();
   const location = useLocation();
-  console.log(location.pathname);
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
   return (
     <>
-      <header className="header-top-strip p-1 px-4 shadow-md">
+      <header className="navbar-top p-2 d-none d-md-block">
         <div className="container-xxl">
-          <div className="row align-items-center">
-            <div className="col-6">
-              <p>The trending outfits at 100% off</p>
-            </div>
-            <div className="col-6 d-flex justify-content-between">
-              <div>
-                <a href="tel:+2457865438" className="text-primary fs-6">
-                  Call us +2457865438
-                </a>
+          <div className="row">
+            <div className="d-flex align-items-center justify-content-between d-none d-md-flex">
+              <div className="col-md-8 me-auto">
+                <p>The trending outfits at 100% off</p>
               </div>
-              <div>
-                <Link>
-                  <BiPhoneCall className="fs-3 mx-4" />
+              <div className="col-md-2">
+                <a href="tel:+254708118414">Call us at +1 (234) 567-890</a>
+              </div>
+              <div className="col-md">
+                <Link className="links fs-4">
+                  <CiMail />
                 </Link>
-                <Link>
-                  <AiOutlineMail className="fs-3 mx-4" />
+                <Link className="links fs-4">
+                  <BiPhoneCall />
+                </Link>
+              </div>
+            </div>
+            <div className="d-flex align-items-center  justify-content-between d-md-none">
+              <div className="col-md-6 me-auto">
+                <p>Save Upto 100%</p>
+              </div>
+              <div className="col-md-2 m-auto">
+                <a href="tel:+254708118414">Call us</a>
+              </div>
+              <div className="col-md-2 m-auto">
+                <Link className="links fs-4">
+                  <CiMail />
+                </Link>
+                <Link className="links fs-4">
+                  <BiPhoneCall />
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </header>
-      <header className="header-upper px-3">
+      <header className="navbar-middle sticky-top p-2 p-md-2 p-lg-2">
         <div className="container-xxl">
-          <div className="row">
-            <div className="col-2 m-auto text-center">
+          <div className="row align-items-center m-0">
+            <div className="col-md-2 d-flex justify-content-center">
+              <button
+                className="navbar-toggler d-md-none "
+                type="button"
+                onClick={toggleMenu}
+              >
+                <span className="navbar-toggler-icon">
+                  {showMenu ? <AiOutlineClose /> : <AiOutlineMenu />}
+                </span>
+              </button>
+
               <Link to="/">
                 <img src={logo} alt="logo" className="img-fluid logo" />
               </Link>
+
+              <button className="cart-span fs-3 d-md-none">
+                <Link
+                  to="cart"
+                  className={
+                    location.pathname === "/cart" ? "active" : "not-active"
+                  }
+                >
+                  <CgShoppingCart />
+                  <b>
+                    <span>{0}</span>
+                  </b>
+                </Link>
+              </button>
+
+              <button className="cart-span-2 fs-3 d-md-none">
+                <Link
+                  to="login"
+                  className={
+                    location.pathname === "/login" ? "active" : "not-active"
+                  }
+                >
+                  <VscAccount />
+                </Link>
+              </button>
             </div>
-            <div className="col-3 d-flex align-items-center mt-3">
-              <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1">
-                  All
-                </span>
-                <input
-                  type="text"
-                  className="form-control p-2"
-                  placeholder="Search products"
-                  aria-label=""
-                  aria-describedby="basic-addon2"
-                />
-                <button className="input-group-text" id="basic-addon2">
-                  Search
-                </button>
+
+            <div className="col-md-10 row col-lg-10">
+              <div className="col-md-3 m-auto">
+                <div className="input-group d-none d-md-flex">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Find products ..."
+                    aria-label="Find products ..."
+                    aria-describedby="basic-addon2"
+                  />
+                  <button className="input-group-text" id="basic-addon2">
+                    search
+                  </button>
+                </div>
+              </div>
+              <div className="col-md-6 m-auto">
+                <div className="menu-links mt-2 d-none d-md-flex d-lg-flex">
+                  <div className="ms-auto gap-3">
+                    <NavLink
+                      to="/"
+                      className={
+                        location.pathname === "/" ? "active" : "not-active"
+                      }
+                      onClick={toggleMenu}
+                    >
+                      HOME
+                    </NavLink>
+                  </div>
+                  <div className="ms-auto gap-3">
+                    <NavLink
+                      to="/shop"
+                      className={
+                        location.pathname === "/shop" ? "active" : "not-active"
+                      }
+                      onClick={toggleMenu}
+                    >
+                      SHOP
+                    </NavLink>
+                  </div>
+                  <div className="ms-auto gap-3">
+                    <NavLink
+                      to="/blog"
+                      className={
+                        location.pathname === "/blog" ? "active" : "not-active"
+                      }
+                      onClick={toggleMenu}
+                    >
+                      BLOG
+                    </NavLink>
+                  </div>
+                  <div className="ms-auto gap-3">
+                    <NavLink
+                      to="/about"
+                      className={
+                        location.pathname === "/about" ? "active" : "not-active"
+                      }
+                      onClick={toggleMenu}
+                    >
+                      ABOUT
+                    </NavLink>
+                  </div>
+                  <div className="ms-auto gap-3">
+                    <NavLink
+                      to="/contact"
+                      className={
+                        location.pathname === "/contact"
+                          ? "active"
+                          : "not-active"
+                      }
+                      onClick={toggleMenu}
+                    >
+                      CONTACT
+                    </NavLink>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-3">
+                <div className="row d-flex justify-content-center">
+                  <div className="col-12 col-md-2 d-none d-md-flex d-lg-flex m-auto">
+                    <div
+                      className={
+                        location.pathname === "/" ? "active" : "not-active"
+                      }
+                    >
+                      <Link
+                        onClick={toggleMenu}
+                        to=""
+                        className="d-flex align-items-center color-nav me-3"
+                      >
+                        <CgProductHunt className="me-1 fs-2" />
+                      </Link>
+                    </div>
+                    <div
+                      className={
+                        location.pathname === "login" ? "active" : "not-active"
+                      }
+                    >
+                      <Link
+                        onClick={toggleMenu}
+                        to="/login"
+                        className="d-flex align-items-center color-nav me-3"
+                      >
+                        <VscAccount className="me-1 fs-2" />
+                      </Link>
+                    </div>
+                    <div
+                      className={
+                        location.pathname === "cart" ? "active" : "not-active"
+                      }
+                    >
+                      <Link
+                        onClick={toggleMenu}
+                        to="/cart"
+                        className="d-flex align-items-center color-nav me-3 cart-span-one"
+                      >
+                        <CgShoppingCart className="me-1 fs-2" />
+                        <div>
+                          <p>
+                            <b>
+                              <span>{0}</span>
+                            </b>
+                          </p>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="nav-links col-4 d-flex align-items-center justify-content-between text-center m-auto">
-              <Link
-                to="/"
-                className={location.pathname === "/" ? "active" : "inactive"}
-              >
-                Home
-              </Link>
-              <Link
-                to="/shop"
-                className={
-                  location.pathname === "/shop" ? "active" : "inactive"
-                }
-              >
-                Shop
-              </Link>
-              <Link
-                to="/blog"
-                className={
-                  location.pathname === "/blog" ? "active" : "inactive"
-                }
-              >
-                Blog
-              </Link>
-              <Link
-                to="/about"
-                className={
-                  location.pathname === "/about" ? "active" : "inactive"
-                }
-              >
-                About
-              </Link>
-              <Link
-                to="/contact"
-                className={
-                  location.pathname === "/contact" ? "active" : "inactive"
-                }
-              >
-                Contact
-              </Link>
-            </div>
-            <div className="nav-links-nav col-3 d-flex align-items-center justify-content-around">
-              <Link
-                to="/wishlist"
-                className={
-                  location.pathname === "/wishlist" ? "inactive" : "active"
-                }
-              >
-                <div className="d-flex">
-                  <HiOutlineInboxIn className="fs-3 mx-2" />
-                  <p>Wishlist</p>
+            {showMenu && (
+              <div className="col-md-10 d-md-none mt-3">
+                <div className="input-group mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Find products ..."
+                    aria-label="Find products ..."
+                    aria-describedby="basic-addon2"
+                  />
+                  <button className="input-group-text" id="basic-addon2">
+                    search
+                  </button>
                 </div>
-              </Link>
-              <Link
-                to="/login"
-                className={
-                  location.pathname === "/login" ? "inactive" : "active"
-                }
-              >
-                <div className="d-flex">
-                  <VscAccount className="fs-3 mx-2" />
-                  <p>Account</p>
+                <div className="menu-links mt-2">
+                  <div className="mb-2">
+                    <NavLink
+                      className={
+                        location.pathname === "/" ? "active" : "not-active"
+                      }
+                      to="/"
+                      onClick={toggleMenu}
+                    >
+                      HOME
+                    </NavLink>
+                  </div>
+                  <div className="mb-2">
+                    <NavLink
+                      className={
+                        location.pathname === "/shop" ? "active" : "not-active"
+                      }
+                      to="/shop"
+                      onClick={toggleMenu}
+                    >
+                      SHOP
+                    </NavLink>
+                  </div>
+                  <div className="mb-2">
+                    <NavLink
+                      className={
+                        location.pathname === "/blog" ? "active" : "not-active"
+                      }
+                      to="/blog"
+                      onClick={toggleMenu}
+                    >
+                      BLOG
+                    </NavLink>
+                  </div>
+                  <div className="mb-2">
+                    <NavLink
+                      className={
+                        location.pathname === "/about" ? "active" : "not-active"
+                      }
+                      to="/about"
+                      onClick={toggleMenu}
+                    >
+                      ABOUT
+                    </NavLink>
+                  </div>
+                  <div className="mb-2">
+                    <NavLink
+                      className={
+                        location.pathname === "/contact"
+                          ? "active"
+                          : "not-active"
+                      }
+                      to="/contact"
+                      onClick={toggleMenu}
+                    >
+                      CONTACT
+                    </NavLink>
+                  </div>
                 </div>
-              </Link>
-              <Link
-                to="/cart"
-                className={
-                  location.pathname === "/cart" ? "inactive" : "active"
-                }
-              >
-                <div className="d-flex">
-                  <CgShoppingCart className="fs-3 mx-2" />
-                  <p>Cart</p>
+
+                <div className="menu-bar__actions">
+                  <div className="mb-2">
+                    <Link
+                      to=""
+                      className={
+                        location.pathname === "/" ? "active" : "not-active"
+                      }
+                      onClick={toggleMenu}
+                    >
+                      <img src={compare} alt="compare" className="d-none" />
+                      <span>New</span>
+                    </Link>
+                  </div>
+                  <div className="mb-2">
+                    <Link
+                      to=""
+                      className={
+                        location.pathname === "/" ? "active" : "not-active"
+                      }
+                      onClick={toggleMenu}
+                    >
+                      <img src={wishlist} alt="wishlist" className="d-none" />
+                      <span>Wishlist</span>
+                    </Link>
+                  </div>
+                  <div className="mb-2">
+                    <Link
+                      to="/login"
+                      className={
+                        location.pathname === "/login" ? "active" : "not-active"
+                      }
+                      onClick={toggleMenu}
+                    >
+                      <img src={user} alt="user" className="d-none" />
+                      <span>Account</span>
+                    </Link>
+                  </div>
                 </div>
-              </Link>
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </header>
